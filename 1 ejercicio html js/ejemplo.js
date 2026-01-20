@@ -1,41 +1,49 @@
-//Definimos variables
-let nombres =[]
-//Definimos funciones
-function agregarNombre(){
+let estudiantes = ["Juan", "Maria", "Rosario"];
+
+function agregarEstudiante(){
     const nombre = inputNombre.value.trim();
-    if(nombre === ''){
-        alert("Ingrese un nombre valido");
-        return;
+
+    if(nombre === ""){
+        alert("Ingrese un nombre");
+        return ;
     }
-    nombres.push(nombre);
+
+    estudiantes.push(nombre);
     inputNombre.value = "";
+
     actualizarLista();
 }
+
 function actualizarLista(){
-    listaNombres.innerHTML = "";
 
-    for(let nombre of nombres){
-        let li = document.createElement('li');
+    listaEstudiantes.innerHTML = "";
+    for(let i =0 ;i<estudiantes.length;i++){
+        const nombre = estudiantes[i];
+        const li = document.createElement("li");
         li.textContent = nombre;
+        
 
-        const btnEliminar = document.createElement('button');
-        btnEliminar.textContent = "Eliminar"
-        btnEliminar.classList.add("btn-eliminar");
-
-        btnEliminar.addEventListener('click',(index) =>{
-            eliminarNombre(index);
+        const btn = document.createElement("button");
+        btn.textContent = "Eliminar"
+        btn.addEventListener('click', ()=>{
+            eliminarNombre(i);
         });
+        btn.classList.add("btn-eliminar");
 
-        li.appendChild(btnEliminar);
-        listaNombres.appendChild(li);
+        li.appendChild(btn);
+        listaEstudiantes.appendChild(li);
     }
 }
+
 function eliminarNombre(index){
-    nombres.splice(index,1);
+    estudiantes.splice(index,1);
     actualizarLista();
 }
-let inputNombre = document.getElementById("input-nombre");
-let btnGuardarNombre = document.getElementById("btn-guardar-nombre");
-let listaNombres = document.getElementById("lista-nombres");
 
-btnGuardarNombre.addEventListener("click", agregarNombre);
+const inputNombre = document.getElementById("input-nombre");
+const btnAgregarNombre = document.getElementById("btn-agregar");
+const listaEstudiantes = document.getElementById("lista-estudiantes");
+
+actualizarLista();
+
+btnAgregarNombre.addEventListener('click', agregarEstudiante);
