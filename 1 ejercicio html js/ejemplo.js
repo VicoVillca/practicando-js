@@ -1,3 +1,13 @@
+console.log(typeof 1);
+console.log(typeof "123");
+console.log(typeof null);
+console.log(typeof undefined);
+console.log(null === undefined);
+console.log(null == undefined);
+
+console.log(typeof null === "object");
+
+
 let estudiantes = ["Juan", "Maria", "Rosario"];
 
 function agregarEstudiante(){
